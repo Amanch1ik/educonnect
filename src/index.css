@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary: #00629d;
+  --color-primary-container: #42a5f5;
+  --color-on-primary-container: #00395e;
+  
+  --color-secondary: #136964;
+  --color-secondary-container: #a4f0e9;
+  --color-on-secondary-container: #1d706a;
+  
+  --color-surface-bright: #f7f9ff;
+  --color-surface-container: #ebeef5;
+  --color-surface-container-low: #f1f4fb;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-on-surface: #181c21;
+  --color-on-surface-variant: #404751;
+  --color-outline: #707882;
+  --color-outline-variant: #bfc7d3;
+  
+  --shadow-ambient: 0 4px 24px rgba(0, 98, 157, 0.06);
+  --shadow-glass: 0 16px 64px -12px rgba(0, 98, 157, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-surface-bright text-on-surface font-sans antialiased;
+  }
+}
+
+.glass {
+  @apply bg-surface-container-lowest/90 backdrop-blur-xl border border-outline-variant/30 shadow-glass;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
