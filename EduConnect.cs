@@ -6,7 +6,7 @@ namespace EduConnect.App
 {
     // --- МОДЕЛИ ДАННЫХ ---
 
-    /// <summary>
+
     /// Представляет пользователя системы (Роль: Студент или Учитель)
     /// </summary>
     public record User(string Id, string Name, string Email, string Role);
