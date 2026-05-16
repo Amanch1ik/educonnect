@@ -11,8 +11,6 @@ namespace EduConnect.App
     /// </summary>
     public record User(string Id, string Name, string Email, string Role);
 
-    /// <summary>
-    /// Модель репетитора с использованием современных record в C#
     /// </summary>
     public record Tutor(
         string Id, 
