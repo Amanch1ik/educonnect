@@ -16,6 +16,8 @@ export default function App() {
   const [role, setRole] = useState<Role>(null);
   const [currentScreen, setCurrentScreen] = useState<'welcome' | 'dashboard' | 'discover' | 'schedule' | 'user_profile' | 'tutor_profile'>('welcome');
   const [selectedTutor, setSelectedTutor] = useState<Tutor | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchKey, setSearchKey] = useState(0);
 
   const handleRoleSelect = (selectedRole: Role) => {
     setRole(selectedRole);
@@ -25,6 +27,12 @@ export default function App() {
   const handleTutorClick = (tutor: Tutor) => {
     setSelectedTutor(tutor);
     setCurrentScreen('tutor_profile');
+  };
+
+  const handleSubjectSearch = (subject: string) => {
+    setSearchQuery(subject);
+    setSearchKey(k => k + 1);
+    setCurrentScreen('discover');
   };
 
   // Экран приветствия (авторизация/выбор роли)
@@ -61,7 +69,7 @@ export default function App() {
               exit={{ opacity: 0, x: -20 }}
               className="h-full overflow-y-auto no-scrollbar pb-24 md:pb-8"
             >
-              <TutorSearchScreen onTutorClick={handleTutorClick} />
+              <TutorSearchScreen key={searchKey} initialQuery={searchQuery} onTutorClick={handleTutorClick} onSubjectClick={handleSubjectSearch} />
             </motion.div>
           )}
           {currentScreen === 'schedule' && (
@@ -94,7 +102,7 @@ export default function App() {
               exit={{ opacity: 0, scale: 1.05 }}
               className="h-full overflow-y-auto no-scrollbar pb-32"
             >
-              <ProfileScreen tutor={selectedTutor} />
+              <ProfileScreen tutor={selectedTutor} onSubjectClick={handleSubjectSearch} />
             </motion.div>
           )}
         </AnimatePresence>

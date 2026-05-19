@@ -6,13 +6,15 @@ import { TUTORS } from '../data/mockData';
 
 interface TutorSearchScreenProps {
   onTutorClick: (tutor: Tutor) => void;
+  initialQuery?: string;
+  onSubjectClick?: (subject: string) => void;
 }
 
 const FILTERS = ['Предмет', 'Цена', 'Рейтинг', 'Доступность'];
 
-export default function TutorSearchScreen({ onTutorClick }: TutorSearchScreenProps) {
-  const [query, setQuery] = useState('');
-  const [activeQuery, setActiveQuery] = useState('');
+export default function TutorSearchScreen({ onTutorClick, initialQuery = '', onSubjectClick }: TutorSearchScreenProps) {
+  const [query, setQuery] = useState(initialQuery);
+  const [activeQuery, setActiveQuery] = useState(initialQuery);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const toggleFilter = (f: string) => {
@@ -74,7 +76,7 @@ export default function TutorSearchScreen({ onTutorClick }: TutorSearchScreenPro
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTutors.map(tutor => (
-            <TutorCard key={tutor.id} tutor={tutor} onClick={() => onTutorClick(tutor)} />
+            <TutorCard key={tutor.id} tutor={tutor} onClick={() => onTutorClick(tutor)} onSubjectClick={onSubjectClick} />
           ))}
         </div>
       )}

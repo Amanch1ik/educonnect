@@ -5,10 +5,11 @@ import { Tutor } from '../types';
 interface TutorCardProps {
   tutor: Tutor;
   onClick: () => void;
+  onSubjectClick?: (subject: string) => void;
 }
 
 // карточка репетитора в результатах поиска
-const TutorCard: FC<TutorCardProps> = ({ tutor, onClick }) => {
+const TutorCard: FC<TutorCardProps> = ({ tutor, onClick, onSubjectClick }) => {
   return (
     <article className="group bg-surface-container-lowest rounded-2xl p-6 shadow-ambient hover:shadow-xl transition-all duration-300 border border-outline-variant/30 flex flex-col relative overflow-hidden h-full">
       <div className="absolute top-0 left-0 w-full h-1.5 bg-secondary-container" />
@@ -42,9 +43,13 @@ const TutorCard: FC<TutorCardProps> = ({ tutor, onClick }) => {
         <p className="text-on-surface-variant line-clamp-2 mb-4 leading-relaxed">{tutor.bio}</p>
         <div className="flex flex-wrap gap-2">
           {tutor.subjects.map(s => (
-            <span key={s} className="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-lg text-xs font-semibold">
+            <button
+              key={s}
+              onClick={e => { e.stopPropagation(); onSubjectClick?.(s); }}
+              className="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-lg text-xs font-semibold hover:bg-secondary-container transition-colors"
+            >
               {s}
-            </span>
+            </button>
           ))}
         </div>
       </div>

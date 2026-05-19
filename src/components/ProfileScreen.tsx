@@ -4,6 +4,7 @@ import { Tutor } from '../types';
 
 interface ProfileScreenProps {
   tutor: Tutor;
+  onSubjectClick?: (subject: string) => void;
 }
 
 const MONTHS = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
@@ -12,7 +13,7 @@ const TIME_SLOTS = ['10:00', '13:30', '15:00', '16:30'];
 const BASE_MONTH = 9; // October
 const BASE_YEAR = 2026;
 
-export default function ProfileScreen({ tutor }: ProfileScreenProps) {
+export default function ProfileScreen({ tutor, onSubjectClick }: ProfileScreenProps) {
   const [selectedSlot, setSelectedSlot] = useState(2);
   const [monthOffset, setMonthOffset] = useState(0);
   const [selectedDay, setSelectedDay] = useState(5);
@@ -75,9 +76,13 @@ export default function ProfileScreen({ tutor }: ProfileScreenProps) {
               </div>
               <div className="flex flex-wrap gap-3">
                 {tutor.subjects.map(s => (
-                  <span key={s} className="bg-primary/5 text-primary border border-primary/20 px-6 py-2 rounded-2xl font-bold hover:bg-primary/10 transition-colors cursor-default">
+                  <button
+                    key={s}
+                    onClick={() => onSubjectClick?.(s)}
+                    className="bg-primary/5 text-primary border border-primary/20 px-6 py-2 rounded-2xl font-bold hover:bg-primary/10 active:scale-95 transition-all"
+                  >
                     {s}
-                  </span>
+                  </button>
                 ))}
               </div>
             </section>
