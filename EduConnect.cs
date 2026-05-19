@@ -1,19 +1,17 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic; 
 using System.Linq;
-
-namespace EduConnect.App
-{
+ 
+namespace EduConnect.App 
+{ 
     // --- МОДЕЛИ ДАННЫХ ---
 
-    /// <summary>
+
     /// Представляет пользователя системы (Роль: Студент или Учитель)
     /// </summary>
     public record User(string Id, string Name, string Email, string Role);
 
-    /// <summary>
-    /// Модель репетитора с использованием современных record в C#
-    /// </summary>
+    /// </summary> 
     public record Tutor(
         string Id, 
         string Name, 
