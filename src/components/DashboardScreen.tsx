@@ -4,10 +4,11 @@ import { SCHEDULE } from '../data/mockData';
 
 interface DashboardScreenProps {
   onSearch: () => void;
+  onSchedule: () => void;
 }
 
 // главный экран после авторизации
-export default function DashboardScreen({ onSearch }: DashboardScreenProps) {
+export default function DashboardScreen({ onSearch, onSchedule }: DashboardScreenProps) {
   const nextLesson = SCHEDULE[0];
   
   return (
@@ -29,7 +30,7 @@ export default function DashboardScreen({ onSearch }: DashboardScreenProps) {
       <section>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-2xl font-bold">Твой следующий урок</h3>
-          <button className="text-primary font-bold hover:underline">Все занятия</button>
+          <button onClick={onSchedule} className="text-primary font-bold hover:underline">Все занятия</button>
         </div>
         <LessonCard lesson={nextLesson} />
       </section>

@@ -65,7 +65,7 @@ export default function WelcomeScreen({ onSelect }: WelcomeScreenProps) {
 
         <div className="mt-16 text-center">
           <p className="text-on-surface-variant">
-            Уже есть аккаунт? <button className="font-semibold text-primary hover:underline ml-1">Войти</button>
+            Уже есть аккаунт? <button onClick={() => onSelect('student')} className="font-semibold text-primary hover:underline ml-1">Войти</button>
           </p>
         </div>
       </motion.div>

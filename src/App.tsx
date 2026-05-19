@@ -50,7 +50,7 @@ export default function App() {
               exit={{ opacity: 0, y: -10 }}
               className="h-full overflow-y-auto no-scrollbar pb-24 md:pb-8"
             >
-              <DashboardScreen onSearch={() => setCurrentScreen('discover')} />
+              <DashboardScreen onSearch={() => setCurrentScreen('discover')} onSchedule={() => setCurrentScreen('schedule')} />
             </motion.div>
           )}
           {currentScreen === 'discover' && (
@@ -83,7 +83,7 @@ export default function App() {
               exit={{ opacity: 0, scale: 1.05 }}
               className="h-full overflow-y-auto no-scrollbar pb-24 md:pb-8"
             >
-              <UserProfileScreen />
+              <UserProfileScreen onLogout={() => { setRole(null); setCurrentScreen('welcome'); }} />
             </motion.div>
           )}
           {currentScreen === 'tutor_profile' && selectedTutor && (
