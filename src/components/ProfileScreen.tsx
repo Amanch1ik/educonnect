@@ -179,7 +179,7 @@ export default function ProfileScreen({ tutor, onSubjectClick }: ProfileScreenPr
         <div className="w-full max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="hidden sm:block">
             <p className="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Ставка за занятие</p>
-            <p className="text-3xl font-bold"><span className="text-primary">${tutor.hourlyRate}</span> <span className="text-lg font-normal text-on-surface-variant">/ час</span></p>
+            <p className="text-3xl font-bold"><span className="text-primary">{tutor.hourlyRate}</span> <span className="text-lg font-normal text-on-surface-variant">сом / час</span></p>
           </div>
           <button
             onClick={handleBook}

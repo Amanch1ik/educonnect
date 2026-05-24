@@ -57,7 +57,7 @@ const TutorCard: FC<TutorCardProps> = ({ tutor, onClick, onSubjectClick }) => {
       <div className="flex items-center justify-between pt-4 border-t border-outline-variant/30 mt-auto">
         <div>
           <span className="text-xs text-outline uppercase tracking-wider font-bold">Стоимость</span>
-          <p className="text-2xl font-bold text-on-surface">${tutor.hourlyRate}<span className="text-sm font-normal text-on-surface-variant">/ч</span></p>
+          <p className="text-2xl font-bold text-on-surface">{tutor.hourlyRate}<span className="text-sm font-normal text-on-surface-variant"> сом/ч</span></p>
         </div>
         <button 
           onClick={onClick}
